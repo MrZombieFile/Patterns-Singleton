@@ -4,12 +4,21 @@ import java.util.ArrayList;
 
 public class Undo {
 
-    private ArrayList<String> llistaDeComandes = new ArrayList<>();
+    private ArrayList<String> llistaDeComandes;
     private static Undo instancia;
-    private ArrayList<String> count = new ArrayList<>();
+
+    private int count = 0;
 
     private Undo(){
+        llistaDeComandes = new ArrayList<>();
+    }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public static Undo getInstance(){
@@ -27,7 +36,7 @@ public class Undo {
 
         llistaDeComandes.remove(llistaDeComandes.size() - 1);
 
-        this.count.add("1");
+        setCount(getCount() + 1);
 
         return llistaDeComandes.get(llistaDeComandes.size() - 1);
 
@@ -35,7 +44,7 @@ public class Undo {
 
     public void add(String comanda){
         if (!comanda.equals("undo"))
-            this.count.clear();
+            setCount(0);
         llistaDeComandes.add(comanda);
     }
 

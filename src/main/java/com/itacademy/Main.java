@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         /*El que faig es, demano que vagi introduint les comandes amb el segon do while, fins que aquesta
         * no sigui "undo or history", si passa aixo vaig al singleton i n'agafo el corresponent.
-        * Tot aixo dins de un primer do while que comprova que l'usuari encara volgui estar dins el programa*/
+        * Tot aixo dins d'un primer do while que comprova que l'usuari encara volgui estar dins el programa*/
 
 
         Scanner scanner = new Scanner(System.in);
@@ -21,11 +21,10 @@ public class Main {
             boolean exitLoop = false;
             int i = undo.getLength();
             ArrayList<String> comandes;
-            ArrayList<String> comandes02 = new ArrayList<>();
             do {
                 comanda = scanner.next();
                 undo.add(comanda);
-                if (comanda.equals("undo") || comanda.equals("history")) {
+                if (comanda.equals("undo") || comanda.equals("history") || comanda.equals("exit")) {
                     exitLoop = true;
                 }
                 i++;
